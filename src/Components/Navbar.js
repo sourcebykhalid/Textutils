@@ -39,7 +39,7 @@ export default function Navbar(props) {
               aria-label="Search"
             />
             <button className="btn btn-outline-success" type="submit">
-              Search
+              {props.search}
             </button>
           </form>
         </div>
@@ -48,12 +48,18 @@ export default function Navbar(props) {
   );
 }
 
+// Navbar.propTypes = {
+//   title: PropTypes.string,
+//   aboutText: PropTypes.string,
+//   search: PropTypes.string,
+// };
 Navbar.propTypes = {
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
   aboutText: PropTypes.string,
+  search: PropTypes.string,
 };
 
 // Navbar.defaultProps = {
 //   title: "Title",
-//   aboutText: "  ",
+//   aboutText: " About Text here ",
 // };
