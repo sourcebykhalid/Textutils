@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+// import { copy } from "react-copy-to-clipboard";
 export default function TextForm(props) {
   const upperCase = () => {
     let newtext = text.toUpperCase();
@@ -11,6 +11,10 @@ export default function TextForm(props) {
   };
   const onChange = (e) => {
     setText(e.target.value);
+  };
+  const clipboard = (e) => {
+    setText(e.target.value.copy);
+    // alert(`You have copied "${text}"`);
   };
   const reset = (e) => {
     e.preventDefault();
@@ -32,14 +36,17 @@ export default function TextForm(props) {
             onChange={onChange}
           ></textarea>
         </div>
-        <button className="btn btn-primary" onClick={upperCase}>
+        <button className="btn btn-primary mx-2" onClick={upperCase}>
           UpperCase Conversion
         </button>
-        <button className="btn btn-primary mx-3" onClick={lowerCase}>
-          lowerCase Conversion
+        <button className="btn btn-primary mx-2" onClick={lowerCase}>
+          LowerCase Conversion
         </button>
-        <button className="btn btn-primary mx-3" type="reset" onClick={reset}>
-          Reset
+        <button className="btn btn-primary mx-2" onClick={clipboard}>
+          Copy to Clipboard
+        </button>
+        <button className="btn btn-primary mx-2" type="reset" onClick={reset}>
+          Clear text
         </button>
       </div>
 
