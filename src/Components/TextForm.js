@@ -5,6 +5,10 @@ export default function TextForm(props) {
     let newtext = text.toUpperCase();
     setText(newtext);
   };
+  const lowerCase = () => {
+    let newtext = text.toLowerCase();
+    setText(newtext);
+  };
   const onChange = (e) => {
     setText(e.target.value);
   };
@@ -24,12 +28,15 @@ export default function TextForm(props) {
             className="form-control"
             id="myBox"
             value={text}
-            rows="12"
+            rows="8"
             onChange={onChange}
           ></textarea>
         </div>
         <button className="btn btn-primary" onClick={upperCase}>
           UpperCase Conversion
+        </button>
+        <button className="btn btn-primary mx-3" onClick={lowerCase}>
+          lowerCase Conversion
         </button>
         <button className="btn btn-primary mx-3" type="reset" onClick={reset}>
           Reset
@@ -42,6 +49,8 @@ export default function TextForm(props) {
           {text.split(" ").length} words and {text.length} characters
         </p>
         <p>{0.008 * text.split(" ").length} Minutes read!</p>
+        <h2>Preview</h2>
+        <p>{text}</p>
       </div>
     </>
   );
