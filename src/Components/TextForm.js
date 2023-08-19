@@ -1,6 +1,17 @@
 import React, { useState } from "react";
-// import { copy } from "react-copy-to-clipboard";
 export default function TextForm(props) {
+  let myStyle = {
+    backgroundColor: "#fff",
+    color: "black",
+    padding: "18px",
+  };
+  let myStyle2 = {
+    backgroundColor: "#f2f2f2",
+    color: "grey",
+    fontFamily: "Poppins",
+    padding: "18px",
+    border: "2px solid lightgreen",
+  };
   const upperCase = () => {
     let newtext = text.toUpperCase();
     setText(newtext);
@@ -12,13 +23,28 @@ export default function TextForm(props) {
   const onChange = (e) => {
     setText(e.target.value);
   };
-  const clipboard = (e) => {
-    setText(e.target.value.copy);
-    // alert(`You have copied "${text}"`);
+  const clipboard = async () => {
+    var text = document.getElementById("myBox");
+    text.select();
+    var copied = document.getElementById("copy");
+
+    try {
+      await navigator.clipboard.writeText(text.value);
+      copied.innerHTML = text.value;
+    } catch (error) {
+      copied.innerHTML = "Error copying text to clipboard.";
+      console.error("Clipboard writeText error:", error);
+    }
   };
+
   const reset = (e) => {
     e.preventDefault();
     setText((e.target.value = ""));
+  };
+  const dark = () => {
+    let darkMode = (document.querySelectorAll(".btn").style.backgroundColor =
+      "red");
+    return darkMode;
   };
 
   const [text, setText] = useState("");
@@ -46,7 +72,10 @@ export default function TextForm(props) {
           Copy to Clipboard
         </button>
         <button className="btn btn-primary mx-2" type="reset" onClick={reset}>
-          Clear text
+          Clear Textarea
+        </button>
+        <button className="btn btn-primary mx-2" onClick={dark}>
+          Dark Mode
         </button>
       </div>
 
@@ -57,7 +86,9 @@ export default function TextForm(props) {
         </p>
         <p>{0.008 * text.split(" ").length} Minutes read!</p>
         <h2>Preview</h2>
-        <p>{text}</p>
+        <p style={myStyle2}>{text}</p>
+        <h2>Clipboard</h2>
+        <p style={myStyle} id="copy"></p>
       </div>
     </>
   );
