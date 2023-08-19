@@ -2,12 +2,15 @@ import React, { useState } from "react";
 
 export default function TextForm(props) {
   const upperCase = () => {
-    // alert("Upper case");
-    setText("Please enter your feedback here!");
+    let newtext = text.toUpperCase();
+    setText(newtext);
   };
   const onChange = (e) => {
-    console.log("Upper case");
     setText(e.target.value);
+  };
+  const reset = (e) => {
+    e.preventDefault();
+    setText((e.target.value = ""));
   };
 
   const [text, setText] = useState("Enter your text here");
@@ -20,13 +23,15 @@ export default function TextForm(props) {
           className="form-control"
           id="myBox"
           value={text}
-          placeholder={text}
           rows="12"
           onChange={onChange}
         ></textarea>
       </div>
       <button className="btn btn-primary" onClick={upperCase}>
         UpperCase Conversion
+      </button>
+      <button className="btn btn-primary mx-3" type="reset" onClick={reset}>
+        Reset
       </button>
     </div>
   );
