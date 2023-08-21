@@ -52,7 +52,7 @@ function App() {
   return (
     <>
       <Navbar
-        title="Word-Counter"
+        title="TextUtils"
         mode={mode}
         toggleMode={toggleMode}
         toggleMode2={toggleMode2}
