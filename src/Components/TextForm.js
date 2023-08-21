@@ -41,11 +41,6 @@ export default function TextForm(props) {
     e.preventDefault();
     setText((e.target.value = ""));
   };
-  const dark = () => {
-    let darkMode = (document.querySelectorAll(".btn").style.backgroundColor =
-      "red");
-    return darkMode;
-  };
 
   const [text, setText] = useState("");
 
@@ -62,20 +57,21 @@ export default function TextForm(props) {
             onChange={onChange}
           ></textarea>
         </div>
-        <button className="btn btn-primary mx-2" onClick={upperCase}>
+        <button className="btn btn-primary mx-2 my-2" onClick={upperCase}>
           UpperCase Conversion
         </button>
-        <button className="btn btn-primary mx-2" onClick={lowerCase}>
+        <button className="btn btn-primary mx-2 my-2" onClick={lowerCase}>
           LowerCase Conversion
         </button>
-        <button className="btn btn-primary mx-2" onClick={clipboard}>
+        <button className="btn btn-primary mx-2 my-2" onClick={clipboard}>
           Copy to Clipboard
         </button>
-        <button className="btn btn-primary mx-2" type="reset" onClick={reset}>
+        <button
+          className="btn btn-primary mx-2 my-2"
+          type="reset"
+          onClick={reset}
+        >
           Clear Textarea
-        </button>
-        <button className="btn btn-primary mx-2" onClick={dark}>
-          Dark Mode
         </button>
       </div>
 
@@ -86,7 +82,11 @@ export default function TextForm(props) {
         </p>
         <p>{0.008 * text.split(" ").length} Minutes read!</p>
         <h2>Preview</h2>
-        <p style={myStyle2}>{text}</p>
+        <p style={myStyle2}>
+          {text.length > 0
+            ? text
+            : "Enter something in above textbox to preview it here!"}
+        </p>
         <h2>Clipboard</h2>
         <p style={myStyle} id="copy"></p>
       </div>
