@@ -7,7 +7,7 @@ function Alert(props) {
   };
   return (
     props.alert && (
-      <div>
+      <>
         <div
           className={`alert alert-${props.alert.type} alert-dismissible fade show`}
           role="alert"
@@ -15,7 +15,7 @@ function Alert(props) {
           <strong>{capitalize(props.alert.type)}: </strong>
           {props.alert.msg}
         </div>
-      </div>
+      </>
     )
   );
 }

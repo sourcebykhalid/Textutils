@@ -39,6 +39,14 @@ export default function TextForm(props) {
       console.error("Clipboard writeText error:", error);
     }
   };
+  function removeSpace(text) {
+    const removedSpace = text.replace(/\s/g, " ");
+
+    // Get the length of the modified string
+    const lengthRemovedSpace = removedSpace.length;
+
+    return lengthRemovedSpace;
+  }
 
   const reset = (e) => {
     e.preventDefault();
@@ -83,6 +91,7 @@ export default function TextForm(props) {
         <h2>Your text summary</h2>
         <p>
           {text.split(" ").length} words and {text.length} characters
+          removeSpace = {removeSpace}
         </p>
         <p>{0.008 * text.split(" ").length} Minutes read!</p>
         <h2>Preview</h2>
