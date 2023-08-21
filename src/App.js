@@ -3,6 +3,7 @@ import "./Appb.css";
 import Navbar from "./Components/Navbar";
 import TextForm from "./Components/TextForm";
 import Alert from "./Components/Alert";
+import About from "./Components/About";
 function App() {
   const [mode, setMode] = useState("light");
   const [alert, setAlert] = useState(null);
@@ -56,9 +57,11 @@ function App() {
         toggleMode={toggleMode}
         toggleMode2={toggleMode2}
       />
+
       <Alert alert={alert} />
       <div className="container my-3" mode={mode} toggleMode={toggleMode}>
         <TextForm heading="Enter your text here!" showAlert={showAlert} />
+        <About />
       </div>
     </>
   );
