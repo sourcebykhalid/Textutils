@@ -15,22 +15,25 @@ export default function TextForm(props) {
   const upperCase = () => {
     let newtext = text.toUpperCase();
     setText(newtext);
+    props.showAlert("Converted to upperCase", "success");
   };
   const lowerCase = () => {
     let newtext = text.toLowerCase();
     setText(newtext);
+    props.showAlert("Converted to lowerCase", "success");
   };
   const onChange = (e) => {
     setText(e.target.value);
   };
   const clipboard = async () => {
-    var text = document.getElementById("myBox");
+    let text = document.getElementById("myBox");
     text.select();
-    var copied = document.getElementById("copy");
+    let copied = document.getElementById("copy");
 
     try {
       await navigator.clipboard.writeText(text.value);
       copied.innerHTML = text.value;
+      props.showAlert("Copied to Clipboard", "success");
     } catch (error) {
       copied.innerHTML = "Error copying text to clipboard.";
       console.error("Clipboard writeText error:", error);
@@ -40,6 +43,7 @@ export default function TextForm(props) {
   const reset = (e) => {
     e.preventDefault();
     setText((e.target.value = ""));
+    props.showAlert("Textarea cleared", "success");
   };
 
   const [text, setText] = useState("");
