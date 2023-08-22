@@ -3,9 +3,6 @@ import "./Appb.css";
 import Navbar from "./Components/Navbar";
 import TextForm from "./Components/TextForm";
 import Alert from "./Components/Alert";
-import About from "./Components/About";
-
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -54,31 +51,21 @@ function App() {
 
   return (
     <>
-      <Router>
-        <Navbar
-          title="TextUtils"
+      <Navbar
+        title="TextUtils"
+        mode={mode}
+        toggleMode={toggleMode}
+        toggleMode2={toggleMode2}
+      />
+      <Alert alert={alert} />
+      <div className={`container my-3 ${mode}`}>
+        <TextForm
+          heading="Enter your text here!"
+          showAlert={showAlert}
           mode={mode}
           toggleMode={toggleMode}
-          toggleMode2={toggleMode2}
         />
-
-        <Alert alert={alert} />
-        <div className={`container my-3 ${mode}`}>
-          <Switch>
-            <Route exact path="/about">
-              <About />
-            </Route>
-            <Route exact path="/">
-              <TextForm
-                heading="Enter your text here!"
-                showAlert={showAlert}
-                mode={mode}
-                toggleMode={toggleMode}
-              />
-            </Route>
-          </Switch>
-        </div>
-      </Router>
+      </div>
     </>
   );
 }
