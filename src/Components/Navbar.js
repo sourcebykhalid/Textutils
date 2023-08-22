@@ -29,11 +29,11 @@ export default function Navbar(props) {
               </Link>
             </li>
            
-            <li className="nav-item">
-              <Link className="nav-link active" to="/">
-                {props.aboutText}
-              </Link>
-            </li>
+            // <li className="nav-item">
+            //   <Link className="nav-link active" to="/">
+            //     {props.aboutText}
+            //   </Link>
+            // </li>
           </ul>
           <div className="form-check form-switch">
             <input
