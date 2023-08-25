@@ -39,9 +39,8 @@ export default function TextForm(props) {
       console.error("Clipboard writeText error:", error);
     }
   };
-  const reset = (e) => {
-    e.preventDefault();
-    setText((e.target.value = ""));
+  const reset = () => {
+    setText("");
     props.showAlert("Textarea cleared", "success");
   };
 
