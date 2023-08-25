@@ -22,7 +22,7 @@ function App() {
       setMode("lightgreen");
       document.body.style.backgroundColor = "lightgreen";
       document.body.style.color = "#000";
-      document.body.style.transition = ".92s";
+      document.body.style.transition = ".92s ";
       showAlert("Green Mode enabled", "success");
     } else {
       setMode("steelblue");
@@ -60,7 +60,7 @@ function App() {
       <Alert alert={alert} />
       <div className={`container my-3 ${mode}`}>
         <TextForm
-          heading="Enter your text here!"
+          heading="Try Textutils- Word counter | Lowercase to Uppercase | Uppercase to Lowercase"
           showAlert={showAlert}
           mode={mode}
           toggleMode={toggleMode}

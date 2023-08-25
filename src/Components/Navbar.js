@@ -25,17 +25,18 @@ export default function Navbar(props) {
             <li className="nav-item">
               <a className="nav-link active" aria-current="page" href="#">
                 Home
-              </Link>
+              </a>
             </li>
+
             <li className="nav-item">
-              <Link className="nav-link active" to="/about">
+              <a className="nav-link active" href="/about">
                 About
-              </Link>
+              </a>
             </li>
             <li className="nav-item">
-              <Link className="nav-link active" to="/">
+              <a className="nav-link active" href="/">
                 {props.aboutText}
-              </Link>
+              </a>
             </li>
           </ul>
           <div className="form-check form-switch">

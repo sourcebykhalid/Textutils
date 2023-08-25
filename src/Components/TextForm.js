@@ -39,15 +39,6 @@ export default function TextForm(props) {
       console.error("Clipboard writeText error:", error);
     }
   };
-  function removeSpace(text) {
-    const removedSpace = text.replace(/\s/g, " ");
-
-    // Get the length of the modified string
-    const lengthRemovedSpace = removedSpace.length;
-
-    return lengthRemovedSpace;
-  }
-
   const reset = (e) => {
     e.preventDefault();
     setText((e.target.value = ""));
@@ -59,7 +50,7 @@ export default function TextForm(props) {
   return (
     <>
       <div>
-        <h1>{props.heading}</h1>
+        <h1 style={{ fontSize: "1.5rem" }}>{props.heading}</h1>
         <div className="mb-3">
           <textarea
             className="form-control"
@@ -90,16 +81,22 @@ export default function TextForm(props) {
       <div className="container my-3">
         <h2>Your text summary</h2>
         <p>
-          {text.split(" ").length} words and {text.length} characters
-          removeSpace = {removeSpace}
+          {
+            text.split(" ").filter((e) => {
+              return e.length !== 0;
+            }).length
+          }{" "}
+          words and {text.length} characters
         </p>
-        <p>{0.008 * text.split(" ").length} Minutes read!</p>
+        <p>
+          {0.008 *
+            text.split(" ").filter((e) => {
+              return e.length !== 0;
+            }).length}{" "}
+          Minutes read!
+        </p>
         <h2>Preview</h2>
-        <p style={myStyle2}>
-          {text.length > 0
-            ? text
-            : "Enter something in above textbox to preview it here!"}
-        </p>
+        <p style={myStyle2}>{text.length > 0 ? text : "Nothing to preview!"}</p>
         <h2>Clipboard</h2>
         <p style={myStyle} id="copy"></p>
       </div>

@@ -1,3 +1,8 @@
 .form-control {
   background-color: lightgreen;
+  font-size: 1rem;
+}
+.form-control heading {
+  background-color: lightgreen;
+  font-size: 1rem;
 }
