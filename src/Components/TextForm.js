@@ -15,30 +15,39 @@ export default function TextForm(props) {
   const upperCase = () => {
     let newtext = text.toUpperCase();
     setText(newtext);
-    props.showAlert("Converted to upperCase", "success");
+    if (text) {
+      props.showAlert("Converted to upperCase", "success");
+    } else {
+      props.showAlert("Please enter some text", "warning");
+    }
   };
   const lowerCase = () => {
     let newtext = text.toLowerCase();
     setText(newtext);
-    props.showAlert("Converted to lowerCase", "success");
+    if (text) {
+      props.showAlert("Converted to lowerCase", "success");
+    } else {
+      props.showAlert("Please enter some text", "warning");
+    }
   };
   const onChange = (e) => {
     setText(e.target.value);
   };
   const clipboard = async () => {
-    let text = document.getElementById("myBox");
-    text.select();
-    let copied = document.getElementById("copy");
+    if (text.trim() === "") {
+      props.showAlert("Please enter some text", "warning");
+      return;
+    }
 
     try {
-      await navigator.clipboard.writeText(text.value);
-      copied.innerHTML = text.value;
+      await navigator.clipboard.writeText(text);
       props.showAlert("Copied to Clipboard", "success");
     } catch (error) {
-      copied.innerHTML = "Error copying text to clipboard.";
+      props.showAlert("Error copying text to clipboard.", "danger");
       console.error("Clipboard writeText error:", error);
     }
   };
+
   const reset = () => {
     setText("");
     props.showAlert("Textarea cleared", "success");
